@@ -1,4 +1,4 @@
-
+#TO-DO LIST
 class ToDoList:
     def __init__(self):
         self.tasks = []
@@ -32,7 +32,7 @@ class ToDoList:
                 status = "Completed" if task["completed"] else "Not Completed"
                 print(f"{idx}. {task['task']} - {status}")
 
-# Main function to run the application
+# Main function
 def main():
     todo_list = ToDoList()
 
@@ -68,6 +68,6 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-# Call the main function to run the program
+
 if __name__ == "__main__":
     main()
