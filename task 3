@@ -1,0 +1,73 @@
+
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append({"task": task, "completed": False})
+
+    def update_task(self, task_id, new_task):
+        if 0 <= task_id < len(self.tasks):
+            self.tasks[task_id]["task"] = new_task
+        else:
+            print("Invalid task ID")
+
+    def complete_task(self, task_id):
+        if 0 <= task_id < len(self.tasks):
+            self.tasks[task_id]["completed"] = True
+        else:
+            print("Invalid task ID")
+
+    def delete_task(self, task_id):
+        if 0 <= task_id < len(self.tasks):
+            self.tasks.pop(task_id)
+        else:
+            print("Invalid task ID")
+
+    def display_tasks(self):
+        if not self.tasks:
+            print("No tasks in the list.")
+        else:
+            for idx, task in enumerate(self.tasks):
+                status = "Completed" if task["completed"] else "Not Completed"
+                print(f"{idx}. {task['task']} - {status}")
+
+# Main function to run the application
+def main():
+    todo_list = ToDoList()
+
+    while True:
+        print("\nTo-Do List Application")
+        print("1. Add a new task")
+        print("2. Update an existing task")
+        print("3. Mark a task as completed")
+        print("4. Delete a task")
+        print("5. Display all tasks")
+        print("6. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            task = input("Enter the new task: ")
+            todo_list.add_task(task)
+        elif choice == '2':
+            task_id = int(input("Enter the task ID to update: "))
+            new_task = input("Enter the updated task: ")
+            todo_list.update_task(task_id, new_task)
+        elif choice == '3':
+            task_id = int(input("Enter the task ID to mark as completed: "))
+            todo_list.complete_task(task_id)
+        elif choice == '4':
+            task_id = int(input("Enter the task ID to delete: "))
+            todo_list.delete_task(task_id)
+        elif choice == '5':
+            todo_list.display_tasks()
+        elif choice == '6':
+            print("Exiting the application. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Call the main function to run the program
+if __name__ == "__main__":
+    main()
